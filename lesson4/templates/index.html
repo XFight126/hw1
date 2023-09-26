@@ -100,7 +100,7 @@
       <div class="row g-0">
         <div class="col-md-4">
           <a href="advertisement.html" class="nav-link">
-            <img src="img/adv.png" class="img-fluid rounded-start" alt="Card title">
+            <img src="{% if adv.image %} {{ adv.image.url }} {% endif %}" class="img-fluid rounded-start" alt="Card title">
           </a>
         </div>
         <div class="col-md-8">
@@ -112,7 +112,7 @@
               <p class="card-text">
                 {{ adv.description }}
               </p>
-              <span>Автор: Никнейм автора объявления</span>
+              <span>Автор: {{ adv.user }} </span>
               <p class="card-text"><small class="text-muted">Размещено: {{adv.created_add}}</small></p>
               <span>Цена: {{ adv.price }}</span>
             </a>

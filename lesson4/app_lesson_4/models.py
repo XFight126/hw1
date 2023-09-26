@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -11,6 +12,8 @@ from django.db import models
 # Цена
 # Уместен ли торг (Булевое поле)
 # --------------------------------------------------------------
+
+User = get_user_model()
 
 class Adverisement(models.Model):
     # поле заголовка
@@ -25,6 +28,10 @@ class Adverisement(models.Model):
     created_add = models.DateTimeField(('Было создано'),auto_now_add=True)
     # поле обновления объявления
     updated_add = models.DateTimeField(('Было обновлено'),auto_now=True)
+    # пользователь
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, null=True)
+    # поле для изображения объявления
+    image = models.ImageField('Изображение', upload_to='lesson4/')
     
     
     def __str__(self):
